@@ -14,6 +14,7 @@ import {
   StringMap,
   StrapiRequestQueryFieldsClause,
   PopulateClause,
+  StrapiDBBulkActionResponse,
 } from "strapi-typed";
 import { ToBeFixed } from "./common";
 import {
@@ -124,6 +125,7 @@ export interface IServiceAdmin {
   rejectComment(id: Id): Promise<Comment>;
   blockNestedThreads(id: Id, blockStatus?: boolean): Promise<boolean>;
   resolveAbuseReport(id: Id, commentId: Id): Promise<CommentReport>;
+  resolveMultipleAbuseReports(ids: Array<Id>, commentId: Id): Promise<StrapiDBBulkActionResponse>;
   getDefaultAuthorPopulate(): { populate: PopulateClause<"avatar"> } | undefined;
 }
 

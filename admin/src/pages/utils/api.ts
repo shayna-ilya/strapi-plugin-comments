@@ -68,3 +68,10 @@ export const resolveReport = ({ id, reportId }: ToBeFixed) => {
     getApiURL(`moderate/single/${id}/report/${reportId}/resolve`)
   );
 };
+
+export const resolveMultipleReports = ({ id, reportIds }: ToBeFixed) => {
+  return axiosInstance.put(
+    getApiURL(`moderate/single/${id}/report/resolve`),
+    reportIds
+  );
+};
