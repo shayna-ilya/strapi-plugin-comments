@@ -30,6 +30,7 @@ const Item = ({
   onApproveCommentClick,
   onRejectCommentClick,
   approvalStatus,
+  pageLink
 }) => {
   const { push } = useHistory();
   const { getSearchParams } = useDataManager();
@@ -66,7 +67,8 @@ const Item = ({
     related: isArray(related) ? first(related) : related,
     created_at: created_at || createdAt,
     updated_at: updated_at || updatedAt,
-    relatedContentTypes
+    relatedContentTypes,
+    pageLink
   };
 
   return (

@@ -21,7 +21,7 @@ const getContentTypeLink = (name) => `application::${name}.${name}`;
 
 const resolveEntityName = entity => ENTITY_NAME_PARAMS.map(_ => entity[_]).filter(_ => _)[0] || '';
 
-const ItemFooter = ({ authorName, authorUser, related, created_at, isDetailedView, relatedContentTypes }) => {
+const ItemFooter = ({ authorName, authorUser, related, created_at, isDetailedView, relatedContentTypes, pageLink }) => {
   const formatAuthor = () => {
     if (authorUser) {
       return authorUser.username;
@@ -72,6 +72,9 @@ const ItemFooter = ({ authorName, authorUser, related, created_at, isDetailedVie
           {isDetailedView ? `(${formatRelationType()}) ${formatRelationName()}` : formatRelationType()}
         </CardItemRelation>
       )}
+      {pageLink && <a href={`${pageLink}`} target={'_blank'}>
+        {pageLink}
+      </a>}
     </Wrapper>
   );
 };
@@ -82,6 +85,7 @@ ItemFooter.propTypes = {
   related: PropTypes.object,
   created_at: PropTypes.string.isRequired,
   isDetailedView: PropTypes.bool,
+  pageLink: PropTypes.string
 };
 
 export default ItemFooter;
